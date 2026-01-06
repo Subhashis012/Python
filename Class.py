@@ -10,5 +10,6 @@ class Student:
 
 s1 = Student("Subashis",97)      
 print(s1.name)  
+# s1.welcome()
 s1.welcome()
 print(s1.get_marks())
