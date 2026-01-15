@@ -26,6 +26,30 @@ def search(root, value):
         root.right = search(root.right, value)
     return root
 
+def get_successor(root):
+    root = root.right
+    while root and root.left:   # root != None and root.left != None
+        root = root.left
+    return root
+
+def delete(root, value):
+    if(root == None):
+        return root
+    if(root.data > value):
+        root.left = delete(root.left, value)
+    elif(root.data < value):
+        root.right = delete(root.right, value)
+    else:
+        if(root.left == None):
+            return root.right
+        if(root.right == None):
+            return root.left
+        else:
+            successor = get_successor(root)
+            root.data = successor.data
+            root.right = delete(root.right, successor.data)
+    return root
+
 def inOrder(root):
     if root:
         inOrder(root.left)
